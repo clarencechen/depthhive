@@ -4,12 +4,18 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    aaptOptions {
+        noCompress "tflite"
+    }
     defaultConfig {
         applicationId "com.example.depthhive"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,6 +37,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
